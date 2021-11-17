@@ -1,0 +1,11 @@
+Metadata-Version: 1.2
+Name: Glide
+Version: 2.3.1
+Summary: Curriculum presentation system.
+Home-page: https://github.com/joelburton/glide
+Author: Joel Burton
+Author-email: joel@joelburton.com
+License: UNKNOWN
+Description: UNKNOWN
+Platform: UNKNOWN
+Requires-Python: >= 3.8.6

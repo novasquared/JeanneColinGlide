@@ -1,0 +1,6 @@
+/.idea
+*.pyc
+/Glide.egg-info
+_build
+reveal.js-4.0.2
+.drawio

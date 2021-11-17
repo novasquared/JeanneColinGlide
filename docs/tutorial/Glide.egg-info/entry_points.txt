@@ -1,0 +1,10 @@
+[pygments.lexers]
+commentablehttp = glide.lexers.commentablehttp:CommentableHttpLexer
+rainbow-2-lines = glide.lexers.rainbow:RainbowTwoLinesLexer
+rainbow-lines = glide.lexers.rainbow:RainbowLinesLexer
+simpleconsole = glide.lexers.simpleconsole:SimpleConsoleLexer
+
+[sphinx.html_themes]
+handouts = glide
+revealjs = glide
+

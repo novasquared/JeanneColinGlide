@@ -1,0 +1,79 @@
+{# Overall page structure for RevealJS theme: single HTML page for each section #}
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>{{ title }}</title>
+
+  <link rel=stylesheet href="https://unpkg.com/reveal.js@4/dist/reset.css">
+  <link rel=stylesheet href="https://unpkg.com/reveal.js@4/dist/reveal.css">
+  <link rel="stylesheet" href="{{ pathto('_static/pygments.css', 1) }}">
+  <link rel="stylesheet" href="{{ pathto('_static/' + style, 1) }}">
+  {% if theme_fonts %}
+    <link href='{{ theme_fonts }}' rel='stylesheet'>
+  {% endif %}
+
+  <style>
+    :root {
+      --theme-bodyfont: {{ theme_bodyfont }};
+      --theme-headfont: {{ theme_headfont }};
+      --theme-codefont: {{ theme_codefont }};
+      --theme-clientcolor: {{ theme_clientcolor }};
+    }
+  </style>
+
+</head>
+<body class="glide">
+
+{%- block document %}
+  <div class="reveal">
+
+    <footer id="slide-footer">
+      {%- if logo %}
+        <img alt="" src="{{ pathto('_static/' + logo, 1) }}">
+      {%- elif theme_logo %}
+        <img alt="" src="{{ pathto('_static/' + theme_logo, 1) }}">
+      {%- endif %}
+    </footer>
+
+    <div class="slides">
+      <section>
+        <h2>{{ title }}</h2>
+        <div class="event">{{ release }}</div>
+      </section>
+
+      {% block body %} {% endblock %}
+    </div>
+
+  </div>
+{%- endblock %}
+
+<script src="https://unpkg.com/reveal.js@4/dist/reveal.js"></script>
+<script src="https://unpkg.com/reveal.js@4/plugin/zoom/zoom.js"></script>
+<script src="https://unpkg.com/reveal.js@4/plugin/search/search.js"></script>
+<script src="https://unpkg.com/reveal.js@4/plugin/notes/notes.js"></script>
+<script>
+    Reveal.initialize({
+        hash: true,
+        transition: "slide", // or "none"
+        hideCursorTime: 1000,
+        width: 1280,
+        height: 720, // was 800
+        margin: .15,
+        plugins: [RevealZoom, RevealSearch, RevealNotes]
+    });
+
+    for (const link of document.getElementsByClassName("external")) {
+        link.setAttribute('target', '_blank');
+    }
+</script>
+
+{%- for scriptfile in script_files %}
+  <script src="{{ pathto(scriptfile, 1) }}"></script>
+{%- endfor %}
+
+{%- block footer %} {% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+Sphinx<5,>=3.2.1
+aafigure
+aafigure
+jsx-lexer
+sphinxcontrib-drawio
+sphinxemoji
+toolz

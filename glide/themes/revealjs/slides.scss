@@ -1,0 +1,250 @@
+@import "reveal.js-4.0.2/css/theme/template/mixins";
+@import "reveal.js-4.0.2/css/theme/template/settings";
+
+// Override theme settings (see ../template/settings.scss)
+$backgroundColor: #fff;
+
+$mainColor: #222;
+$headingColor: var(--theme-clientcolor);
+
+$mainFontSize: 36px;
+$mainFont: var(--theme-bodyfont);
+$headingFont: var(--theme-headfont);
+$headingTextShadow: none;
+$headingLetterSpacing: normal;
+$headingTextTransform: none;
+$headingFontWeight: 600;
+$linkColor: #2a76dd;
+$linkColorHover: lighten($linkColor, 15%);
+$selectionBackgroundColor: lighten($linkColor, 25%);
+
+$heading1Size: 2.5em;
+$heading2Size: 1.6em;
+$heading3Size: 1.3em;
+$heading4Size: 1.0em;
+
+$codeFont: var(--theme-codefont);
+
+@import "reveal.js-4.0.2/css/theme/template/theme";
+
+// Import general Glide CSS
+@import "../common";
+
+// In general, RevealJS namespaces all of its CSS with ".reveal": to make it
+// easier to override it without artificial specificity, everything in here is
+// also namespaced to that.
+
+// ============================================================== slide layout
+
+.reveal {
+
+  .slides > section,
+  .slides > section > section {
+    // Allow things to go closer to top/bottom of a slide
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  // Group concept slides
+  h2 {
+    padding: 0.3em 0.4em;
+    border: solid 1px $theme-clientcolor;
+    border-radius: 0.5em;
+    // move slightly above center, and fix border cutoff when has no margin
+    margin-top: .1em;
+    margin-bottom: .5em;
+  }
+
+  // The title slide is the first h2
+  .slides > section:first-of-type h2 {
+    background-color: $theme-clientcolor;
+    color: white;
+  }
+
+  // Ordinary slide title
+  h3 {
+    margin-bottom: 1em;
+  }
+
+  /* Theme logo at the bottom left of every slide. */
+  #slide-footer {
+    height: 2.5vw;
+    position: absolute;
+    bottom: 3.5vw;
+    left: 2vw;
+  }
+
+  .controls {
+    color: $theme-clientcolor;
+    font-size: 5pt;
+  }
+
+  .progress span {
+    background: $theme-clientcolor;
+  }
+}
+
+// ========================================================= typography & roles
+
+.reveal {
+
+  .versionchanged,
+  .versionadded,
+  .deprecated {
+    display: none;
+  }
+
+  .rubric {
+    // Make the same color as other headings
+    color: $headingColor;
+  }
+
+  hr {
+    // Take up less vertical space on slides (not enough room!)
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+
+  img {
+    // less than the 1em reveal wants
+    margin: 0;
+  }
+
+  sub, sup {
+    vertical-align: baseline;
+    font-size: 0.7em;
+  }
+}
+
+// ========================================================== ul, ol, and hlist
+
+.reveal {
+  ul,
+  ul ul,
+  ul ul ul {
+    // Override reveal, which uses different symbols at different depths
+    list-style-type: circle;
+  }
+
+  // Sub-lists of lists get smaller faster than in general
+  ul.simple,
+  ol.simple {
+    ul, ol {
+      font-size: 0.9em;
+    }
+  }
+
+  // Override Reveal, which wants to vertically center these
+  ul,
+  ol,
+  dl { vertical-align: top }
+
+  // In RevealJS, two lists in direct order are placed side-by-side: this will
+  // put some margin between the L and R
+  ul + ul,
+  ul + ol,
+  ol + ul,
+  ol + ol {
+    margin-left: 2em;
+  }
+}
+
+// ===================================================================== tables
+
+.reveal {
+  table.docutils {
+    font-size: 0.6em;
+  }
+}
+
+// ================================================================ code blocks
+
+.reveal {
+  .highlight pre,
+  .parsed-literal-wrapper pre {
+    // this isn't a magic number; it's just a good sense of what fits :)
+    font-size: 0.52em;
+  }
+
+  .highlight .c1 {
+    // make darker so easier to see on slides
+    color: $mid-gray;
+  }
+}
+
+// =========================================== admonitions (note, warning, etc)
+
+.reveal {
+  .admonition {
+    // Different look on slides: centered in middle of screen
+    max-width: 20em;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+// ==================================================================== compare
+
+.reveal {
+  .compare {
+    // Normally text is centered, but when in compare blocks, that looks weird;
+    // left-justify it and center the compare block on the screen
+    text-align: left;
+    justify-content: center;
+  }
+}
+
+// =========================================== blockquote, pull-quote, epigraph
+
+.reveal {
+  blockquote {
+    // Override RevealJS styling
+    margin-left: 0;
+    padding-left: 1em;
+    padding-right: 1em;
+    font-style: unset;
+    box-shadow: none;
+    &.epigraph { font-style: italic }
+    &.pull-quote { font-style: italic }
+
+    blockquote p.attribution {
+      // Override RevealJS styling
+      display: block;
+      color: $mid-gray;
+    }
+
+    &.epigraph {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+// ==================================================================== sphinx
+
+.reveal {
+  .mermaid {
+    // The diagram are too big otherwise
+    font-size: 60%
+  }
+
+  .reveal .raw-handouts {
+    display: none;
+  }
+
+  .headerlink {
+    display: none;
+  }
+}
+
+// todo: we need a better api here
+//
+// .print-hide (hide from print)
+// .print-show (show, even if normally wouldn't)
+// .print-only (only only on print)
+//
+// same for .handouts, .slides (and should plan for .epub, too
+//
+// this kind of stuff isn't perfect -- it's better to use .. only, so the
+// assets are purely skipped. when would we need this? is this just for
+// printing?

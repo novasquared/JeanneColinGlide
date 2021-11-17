@@ -1,0 +1,10 @@
+Glide
+docutils
+Sphinx
+setuptools
+numpy
+matplotlib
+toolz
+scipy
+jsx-lexer
+Pygments
